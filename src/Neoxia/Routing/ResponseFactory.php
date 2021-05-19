@@ -57,8 +57,10 @@ class ResponseFactory extends BaseResponseFactory
      */
     protected function dataIsEmpty($data)
     {
-        if (method_exists($data, 'isEmpty')) {
-            return $data->isEmpty();
+        if(!is_array($data)){
+            if (method_exists($data, 'isEmpty')) {
+                return $data->isEmpty();
+            }
         }
 
         return empty($data);
